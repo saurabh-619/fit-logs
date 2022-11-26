@@ -14,3 +14,4 @@ web-build/
 .DS_Store
 key-store.md
 google-services.json
+*env*

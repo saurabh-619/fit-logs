@@ -1,9 +1,11 @@
 import * as React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { AUTH_STATE_KEY } from '../constants/constants'
+import { IUser } from '../types/user'
 
 export interface IAuthState {
   token: string
+  user: IUser
 }
 
 export interface IAuthContext {
@@ -40,7 +42,8 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   async function getAuthState() {
     try {
       const authDataString = await AsyncStorage.getItem(AUTH_STATE_KEY)
-      if(!authDataString) throw new Error()
+      console.log({ authDataString })
+      if (!authDataString) throw new Error()
       setAuthState((_) => JSON.parse(authDataString))
     } catch (e) {
       setAuthState(undefined)

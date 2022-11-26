@@ -1,8 +1,11 @@
+import { NhostReactProvider } from '@nhost/react'
+import { NhostApolloProvider } from '@nhost/react-apollo'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AuthProvider } from './context/auth'
 import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
+import { nHostClient } from './lib/nhost'
 import Navigation from './navigation'
 
 export default function App() {
@@ -13,13 +16,16 @@ export default function App() {
     return null
   } else {
     return (
-      <AuthProvider>
-        <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar />
-        </SafeAreaProvider>
-      </AuthProvider>
+      <NhostReactProvider nhost={nHostClient}>
+        <NhostApolloProvider nhost={nHostClient}>
+          <AuthProvider>
+            <SafeAreaProvider>
+              <Navigation colorScheme={colorScheme} />
+              <StatusBar />
+            </SafeAreaProvider>
+          </AuthProvider>
+        </NhostApolloProvider>
+      </NhostReactProvider>
     )
   }
 }
-
