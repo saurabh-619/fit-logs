@@ -5,16 +5,22 @@
  */
 import { Feather, FontAwesome5 } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native'
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as React from 'react'
 import { ColorSchemeName } from 'react-native'
 
 import Colors from '../constants/Colors'
+import { useAuth } from '../context/auth'
 import useColorScheme from '../hooks/useColorScheme'
 import AddWorkoutScreen from '../screens/AddWorkout'
 import HistoryScreen from '../screens/History'
 import HomeScreen from '../screens/Home'
+import LoginScreen from '../screens/Login'
 import ModalScreen from '../screens/ModalScreen'
 import NotFoundScreen from '../screens/NotFoundScreen'
 import ProfileScreen from '../screens/Profile'
@@ -22,7 +28,11 @@ import SearchScreen from '../screens/Search'
 import { RootStackParamList, RootTabParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName
+}) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -33,17 +43,33 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   )
 }
 
-/**
- * A root stack navigator is often used for displaying modals on top of all other content.
- * https://reactnavigation.org/docs/modal
- */
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
+  const { authState } = useAuth()
+
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      {authState?.token ? (
+        <Stack.Screen
+          name="Root"
+          component={BottomTabNavigator}
+          options={{ headerShown: false }}
+        />
+      ) : (
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+      )}
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ title: 'Oops!' }}
+      />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -73,7 +99,7 @@ function BottomTabNavigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          tabBarLabel:"home"
+          tabBarLabel: 'home',
         }}
       />
       <BottomTab.Screen
@@ -82,7 +108,7 @@ function BottomTabNavigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
-          tabBarLabel:"search"
+          tabBarLabel: 'search',
         }}
       />
       <BottomTab.Screen
@@ -90,8 +116,8 @@ function BottomTabNavigator() {
         component={AddWorkoutScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) =>  <WorkoutIcon color={color} />,
-          tabBarLabel:"add workout"
+          tabBarIcon: ({ color }) => <WorkoutIcon color={color} />,
+          tabBarLabel: 'add workout',
         }}
       />
       <BottomTab.Screen
@@ -99,8 +125,8 @@ function BottomTabNavigator() {
         component={HistoryScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
-          tabBarLabel:"history"
+          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
+          tabBarLabel: 'history',
         }}
       />
       <BottomTab.Screen
@@ -108,8 +134,8 @@ function BottomTabNavigator() {
         component={ProfileScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          tabBarLabel:"profile"
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          tabBarLabel: 'profile',
         }}
       />
     </BottomTab.Navigator>
@@ -126,8 +152,13 @@ function TabBarIcon(props: {
   return <Feather size={18} style={{ marginBottom: -3 }} {...props} />
 }
 
-function WorkoutIcon(props: {
-  color: string
-}){
-  return <FontAwesome5 name="dumbbell" size={18} style={{ marginBottom: -3 }} {...props}/>
+function WorkoutIcon(props: { color: string }) {
+  return (
+    <FontAwesome5
+      name="dumbbell"
+      size={18}
+      style={{ marginBottom: -3 }}
+      {...props}
+    />
+  )
 }
