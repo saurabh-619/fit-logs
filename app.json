@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "gym-app",
-    "slug": "gym-app",
+    "name": "fit-logs",
+    "slug": "fit-logs",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
