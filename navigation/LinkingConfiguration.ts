@@ -43,6 +43,7 @@ const linking: LinkingOptions<RootStackParamList> = {
         },
       },
       Modal: 'modal',
+      WorkoutPRForm: 'workout-pr-form-modal',
       NotFound: '*',
     },
   },

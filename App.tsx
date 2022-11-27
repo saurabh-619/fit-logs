@@ -8,6 +8,9 @@ import useColorScheme from './hooks/useColorScheme'
 import { nHostClient } from './lib/nhost'
 import Navigation from './navigation'
 
+import { LogBox } from 'react-native'
+LogBox.ignoreAllLogs()
+
 export default function App() {
   const isLoadingComplete = useCachedResources()
   const colorScheme = useColorScheme()

@@ -9,6 +9,7 @@ import {
   NavigatorScreenParams,
 } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { IPRState } from './screens/AddWorkout'
 
 declare global {
   namespace ReactNavigation {
@@ -16,10 +17,15 @@ declare global {
   }
 }
 
+export type IWorkoutPRFormRoute = {
+  addNewPR: (pr: IPRState) => void
+}
+
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined
   Login: undefined
   Modal: undefined
+  WorkoutPRForm: IWorkoutPRFormRoute
   NotFound: undefined
 }
 

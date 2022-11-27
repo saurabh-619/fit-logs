@@ -110,3 +110,13 @@ export const CREATE_USER = gql`
     }
   }
 `
+
+export const CREATE_WORKOUT = gql`
+  mutation CreateWorkout($photos: String!, $user: bigint!) {
+    insert_workout(objects: { photos: $photos, user: $user }) {
+      returning {
+        id
+      }
+    }
+  }
+`
