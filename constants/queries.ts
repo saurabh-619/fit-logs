@@ -110,3 +110,56 @@ export const CREATE_USER = gql`
     }
   }
 `
+
+export const CREATE_WORKOUT = gql`
+  mutation CreateWorkout($photos: String!, $user: bigint!) {
+    insert_workout(objects: { photos: $photos, user: $user }) {
+      returning {
+        id
+      }
+    }
+  }
+`
+
+export const CREATE_PR = gql`
+  mutation CreatePR(
+    $reps: Int!
+    $title: String!
+    $user: bigint!
+    $weight: Int!
+    $workout: bigint!
+  ) {
+    insert_pr(
+      objects: {
+        reps: $reps
+        title: $title
+        user: $user
+        weight: $weight
+        workout: $workout
+      }
+    ) {
+      returning {
+        id
+      }
+    }
+  }
+`
+
+export const GET_ALL_WORKOUTS_OF_AUTH_USER = gql`
+  query GetAllWorkoutsOfAuthUser($userId: bigint!) {
+    workout(order_by: { created_at: desc }, where: { user: { _eq: $userId } }) {
+      id
+      commentsByWorkout {
+        id
+      }
+      likesByWorkout {
+        id
+      }
+      prsByWorkout {
+        id
+      }
+      created_at
+      updated_at
+    }
+  }
+`

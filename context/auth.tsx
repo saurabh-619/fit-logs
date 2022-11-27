@@ -42,7 +42,6 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   async function getAuthState() {
     try {
       const authDataString = await AsyncStorage.getItem(AUTH_STATE_KEY)
-      console.log({ authDataString })
       if (!authDataString) throw new Error()
       setAuthState((_) => JSON.parse(authDataString))
     } catch (e) {

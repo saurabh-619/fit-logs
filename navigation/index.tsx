@@ -25,6 +25,7 @@ import ModalScreen from '../screens/ModalScreen'
 import NotFoundScreen from '../screens/NotFoundScreen'
 import ProfileScreen from '../screens/Profile'
 import SearchScreen from '../screens/Search'
+import WorkoutPRForm from '../screens/WorkoutPRForm'
 import { RootStackParamList, RootTabParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 
@@ -70,6 +71,13 @@ function RootNavigator() {
         component={NotFoundScreen}
         options={{ title: 'Oops!' }}
       />
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen
+          name="WorkoutPRForm"
+          component={WorkoutPRForm}
+          options={{ headerShown: false }}
+        />
+      </Stack.Group>
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -125,7 +133,9 @@ function BottomTabNavigator() {
         component={HistoryScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="calendar" color={color} />
+          ),
           tabBarLabel: 'history',
         }}
       />

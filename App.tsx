@@ -7,6 +7,10 @@ import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
 import { nHostClient } from './lib/nhost'
 import Navigation from './navigation'
+import Toast from 'react-native-toast-message'
+
+import { LogBox } from 'react-native'
+LogBox.ignoreAllLogs()
 
 export default function App() {
   const isLoadingComplete = useCachedResources()
@@ -22,6 +26,7 @@ export default function App() {
             <SafeAreaProvider>
               <Navigation colorScheme={colorScheme} />
               <StatusBar />
+              <Toast />
             </SafeAreaProvider>
           </AuthProvider>
         </NhostApolloProvider>
