@@ -88,16 +88,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: Colors.dark.card,
+    backgroundColor: 'transparent',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: Colors.dark.card,
+    backgroundColor: 'transparent',
   },
   avatar: { height: 42, width: 42, borderRadius: 35 },
-  userInfo: { backgroundColor: Colors.dark.card, marginLeft: 10 },
+  userInfo: { backgroundColor: 'transparent', marginLeft: 10 },
   name: { fontFamily: 'inter-medium' },
   subtitle: {
     fontFamily: 'inter-regular',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   photo: {
-    backgroundColor: Colors.dark.card,
+    backgroundColor: 'transparent',
     paddingVertical: 40,
     alignItems: 'center',
   },
@@ -120,18 +120,18 @@ const styles = StyleSheet.create({
   },
   prs: {
     alignItems: 'center',
-    backgroundColor: Colors.dark.card,
+    backgroundColor: 'transparent',
   },
   iconLabel: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.dark.card,
+    backgroundColor: 'transparent',
   },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    backgroundColor: Colors.dark.card,
+    backgroundColor: 'transparent',
   },
   icon: {
     fontSize: 12,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   dateContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'red',
+    backgroundColor: 'transparent',
   },
   date: {
     fontSize: 14,

@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   rowContent: {
-    paddingTop: 10,
+    paddingTop: 30,
     width: '100%',
     textAlign: 'left',
   },

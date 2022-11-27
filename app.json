@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "fit-logs",
+    "name": "Fit logs",
     "slug": "fit-logs",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

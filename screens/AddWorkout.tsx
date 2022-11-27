@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingTop: 20,
   },
   rowContent: {
     padding: 20,
@@ -131,6 +132,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 20,
   },
   title: {
     fontSize: 24,

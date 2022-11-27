@@ -18,8 +18,8 @@ const WorkoutPRForm = ({ route, navigation }: Props) => {
   const [selectedExercise, setSelectedExercise] = useState(
     exerciseData[0].exercise,
   )
-  const [weight, setWeight] = useState<string | null>(null)
-  const [reps, setReps] = useState<string | null>(null)
+  const [weight, setWeight] = useState<string | null>('10')
+  const [reps, setReps] = useState<string | null>('10')
 
   const handleAddPR = () => {
     const newPr = {
