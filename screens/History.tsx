@@ -1,4 +1,9 @@
-import { ScrollView, StyleSheet } from 'react-native'
+import {
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native'
 import React from 'react'
 import { Text, View } from '../components/Themed'
 import { RootTabScreenProps } from '../types'
@@ -26,9 +31,20 @@ const HistoryScreen = ({ navigation }: RootTabScreenProps<'History'>) => {
         style={styles.listWrapper}
         showsVerticalScrollIndicator={false}
       >
-        {!loading && history?.workout.length !== 0 ? (
+        {loading ? (
+          <View style={styles.spinnerView}>
+            <ActivityIndicator size="small" color={Colors.dark.accent} />
+          </View>
+        ) : history?.workout.length !== 0 ? (
           history?.workout.map((workout: IWorkout) => (
-            <HistoryWorkout key={workout.id} workout={workout} />
+            <TouchableOpacity
+              key={workout.id}
+              onPress={() => {
+                navigation.navigate('WorkoutDetail', { id: workout.id })
+              }}
+            >
+              <HistoryWorkout key={workout.id} workout={workout} />
+            </TouchableOpacity>
           ))
         ) : (
           <View style={styles.emptyPrsWrapper}>
@@ -71,6 +87,10 @@ const styles = StyleSheet.create({
   listWrapper: {
     width: '100%',
     padding: 20,
+  },
+  spinnerView: {
+    justifyContent: 'center',
+    height: 500,
   },
   emptyPrsWrapper: {
     width: '100%',

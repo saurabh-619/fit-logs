@@ -13,8 +13,6 @@ interface IHistoryWorkoutProps {
 const HistoryWorkout: React.FC<IHistoryWorkoutProps> = (props) => {
   const { workout } = props
 
-  console.log({ workout })
-
   return (
     <View style={styles.card}>
       <View style={styles.rowContent}>
