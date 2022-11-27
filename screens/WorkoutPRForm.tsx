@@ -50,7 +50,7 @@ const WorkoutPRForm = ({ route, navigation }: Props) => {
             placeholder={'choose exercise'}
             value={selectedExercise}
             onChange={(item) => {
-              setSelectedExercise(item.value)
+              setSelectedExercise(item.exercise)
             }}
           />
           <View style={styles.inputWrapper}>
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontSize: 16,
-    color: Colors.dark.text,
     paddingHorizontal: 10,
+    color: Colors.dark.text,
   },
   iconStyle: {
     width: 20,
