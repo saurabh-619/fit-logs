@@ -163,3 +163,78 @@ export const GET_ALL_WORKOUTS_OF_AUTH_USER = gql`
     }
   }
 `
+
+export const GET_ALL_WORKOUTS = gql`
+  query GetAllWorkouts {
+    workout(order_by: { created_at: desc }) {
+      id
+      photos
+      gym_user {
+        avatar
+        id
+        name
+        email
+      }
+      likesByWorkout {
+        id
+      }
+      prsByWorkout {
+        id
+      }
+      commentsByWorkout {
+        id
+      }
+      created_at
+      updated_at
+    }
+  }
+`
+
+export const GET_A_WORKOUT = gql`
+  query GetAWorkout($id: bigint!) {
+    workout_by_pk(id: $id) {
+      id
+      commentsByWorkout {
+        created_at
+        id
+        gym_user {
+          avatar
+          email
+          id
+          name
+        }
+        text
+      }
+      gym_user {
+        avatar
+        created_at
+        email
+        id
+        name
+        updated_at
+      }
+      likesByWorkout {
+        created_at
+        id
+        gym_user {
+          avatar
+          email
+          id
+          name
+        }
+        updated_at
+      }
+      photos
+      prsByWorkout {
+        created_at
+        id
+        reps
+        title
+        weight
+        updated_at
+      }
+      created_at
+      updated_at
+    }
+  }
+`

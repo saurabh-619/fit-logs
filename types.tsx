@@ -21,11 +21,16 @@ export type IWorkoutPRFormRoute = {
   addNewPR: (pr: IPRState) => void
 }
 
+export type IWorkoutDetailRoute = {
+  id: number
+}
+
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined
   Login: undefined
   Modal: undefined
   WorkoutPRForm: IWorkoutPRFormRoute
+  WorkoutDetail: IWorkoutDetailRoute
   NotFound: undefined
 }
 

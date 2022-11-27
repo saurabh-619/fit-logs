@@ -25,6 +25,7 @@ import ModalScreen from '../screens/ModalScreen'
 import NotFoundScreen from '../screens/NotFoundScreen'
 import ProfileScreen from '../screens/Profile'
 import SearchScreen from '../screens/Search'
+import WorkoutDetail from '../screens/WorkoutDetail'
 import WorkoutPRForm from '../screens/WorkoutPRForm'
 import { RootStackParamList, RootTabParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
@@ -77,6 +78,13 @@ function RootNavigator() {
           component={WorkoutPRForm}
           options={{ headerShown: false }}
         />
+      </Stack.Group>
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen
+          name="WorkoutDetail"
+          component={WorkoutDetail}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

@@ -17,6 +17,7 @@ export default {
     card: '#13151a',
     text: '#fff',
     text_2: '#eee',
+    text_3: '#ddd',
     background: '#000',
     tint: tintColorDark,
     tabIconDefault: '#ccc',
