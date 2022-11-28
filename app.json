@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Fit logs",
+    "name": "fitlogs",
     "slug": "fit-logs",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -30,6 +30,11 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "27ba5add-d393-4d2c-9125-3a4be8f45ac5"
+      }
     }
   }
 }
